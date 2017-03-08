@@ -53,7 +53,7 @@ class AuthToken {
 
     $this->token = json_decode($result);
 
-    if (property_exists($this->accessToken, 'error')) {
+    if (property_exists($this->token, 'error')) {
       $error = $this->accessToken->error . ': ' . $this->accessToken->error_description;
       throw new AuthException($error);
     }
