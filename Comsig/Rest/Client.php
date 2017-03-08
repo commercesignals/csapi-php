@@ -6,6 +6,7 @@ require_once(__DIR__ . '/../autoload.php');
 
 use Comsig\Auth\AuthToken;
 use Comsig\Exceptions\AuthException;
+use Comsig\API\API;
 
 class Client {
   public function __construct($apiKey, $cert, $apiBase) {
@@ -13,10 +14,17 @@ class Client {
 
     try {
       $authToken->request();
-      print_r($authToken->token);
-
-    } catch (AuthException $e) {
-      print $e->getMessage() . "\n";
+      $this->api = new API($apiBase, $authToken->token);
+    } catch (Exception $e) {
+      print_r($e);
     }
+  }
+
+  public function getSignals() {
+    print_r($this->api->get('signals'));
+  }
+
+  public function getSignalRequests($signalUUID) {
+    return $this->api->get('signals/' . $signalUUID . '/requests');
   }
 }

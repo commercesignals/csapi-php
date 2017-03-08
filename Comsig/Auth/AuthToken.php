@@ -74,5 +74,4 @@ class AuthToken {
 
     return JWT::encode($claims, $this->cert);
   }
-
 }
