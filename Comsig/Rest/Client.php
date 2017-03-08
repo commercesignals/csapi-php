@@ -21,10 +21,21 @@ class Client {
   }
 
   public function getSignals() {
-    print_r($this->api->get('signals'));
+    return $this->api->getList('signals');
   }
 
-  public function getSignalRequests($signalUUID) {
-    return $this->api->get('signals/' . $signalUUID . '/requests');
+  public function getSignalRequests($signalId) {
+    $url = implode('/', ['signals', $signalId, 'requests']);
+    return $this->api->getList($url);
+  }
+
+  public function getSignalRequest($signalId, $requestId) {
+    $url = implode('/', ['signals', $signalId, 'requests', $requestId]);
+    return $this->api->get($url);
+  }
+
+  public function getSignalResults($signalId, $resultsId) {
+    $url = implode('/', ['signals', $signalId, 'requests', $resultsId, 'results']);
+    return $this->api->get($url);
   }
 }
