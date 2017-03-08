@@ -2,8 +2,7 @@
 
 namespace Comsig\Rest;
 
-require_once(dirname(__FILE__) . '/../Auth/AuthToken.php');
-require_once(dirname(__FILE__) . '/../Exceptions/AuthException.php');
+require_once(__DIR__ . '/../autoload.php');
 
 use Comsig\Auth\AuthToken;
 use Comsig\Exceptions\AuthException;

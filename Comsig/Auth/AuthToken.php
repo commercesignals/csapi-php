@@ -2,9 +2,6 @@
 
 namespace Comsig\Auth;
 
-require_once(dirname(__FILE__) . '/JWT.php');
-require_once(dirname(__FILE__) . '/../Exceptions/AuthException.php');
-
 use Comsig\Auth\JWT;
 use Comsig\Exceptions\AuthException;
 
