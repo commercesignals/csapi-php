@@ -17,8 +17,13 @@ class API {
     ]);
   }
 
-  public function get($url) {
+  public function getList($url) {
     $results = $this->api->get($url);
     return json_decode($results->response)->content;
+  }
+
+  public function get($url) {
+    $results = $this->api->get($url);
+    return json_decode($results->response);
   }
 }
