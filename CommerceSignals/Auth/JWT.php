@@ -1,6 +1,6 @@
 <?php
 
-namespace Comsig\Auth;
+namespace CommerceSignals\Auth;
 
 /**
  * Implements JWT encoding and decoding as per http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-06
