@@ -1,5 +1,5 @@
 <?php
 
-namespace Comsig\Exceptions;
+namespace CommerceSignals\Exceptions;
 
 class AuthException extends \Exception { }

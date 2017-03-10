@@ -1,12 +1,12 @@
 <?php
 
-namespace Comsig\Rest;
+namespace CommerceSignals\Rest;
 
 require_once(__DIR__ . '/../autoload.php');
 
-use Comsig\Auth\AuthToken;
-use Comsig\Exceptions\AuthException;
-use Comsig\API\API;
+use CommerceSignals\Auth\AuthToken;
+use CommerceSignals\Exceptions\AuthException;
+use CommerceSignals\API\API;
 
 class Client {
   public function __construct($apiKey, $cert, $apiBase) {

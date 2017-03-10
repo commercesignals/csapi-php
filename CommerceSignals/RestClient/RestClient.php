@@ -1,6 +1,6 @@
 <?php
 
-namespace Comsig\API\RestClient;
+namespace CommerceSignals\RestClient;
 
 /**
  * PHP REST Client
@@ -131,6 +131,8 @@ class RestClient implements \Iterator, \ArrayAccess {
     }
 
     public function execute($url, $method='GET', $parameters=[], $headers=[]){
+        print 'Getting: ' . $url;
+
         $client = clone $this;
         $client->url = $url;
         $client->handle = curl_init();

@@ -1,9 +1,9 @@
 <?php
 
-namespace Comsig\Auth;
+namespace CommerceSignals\Auth;
 
-use Comsig\Auth\JWT;
-use Comsig\Exceptions\AuthException;
+use CommerceSignals\Auth\JWT;
+use CommerceSignals\Exceptions\AuthException;
 
 use \DateTime;
 use \DateTimeZone;
