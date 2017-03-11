@@ -27,7 +27,7 @@ class API {
    */
   public function __call($name, $arguments) {
     if (count($this->urlSegments) !== 0) {
-      $segmentRoot = '_' . $this->urlSegments[0];
+      $segmentRoot = $this->urlSegments[0];
 
       if (property_exists($this, $segmentRoot) === false ||
           method_exists($this->$segmentRoot, $name) === false) {
