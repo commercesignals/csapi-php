@@ -3,7 +3,7 @@
 
 namespace CommerceSignals;
 
-class Signal {
+class Signals {
   private $api;
 
   public function __construct($api) {
