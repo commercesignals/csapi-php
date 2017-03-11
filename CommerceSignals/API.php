@@ -17,7 +17,7 @@ class API {
 
   public function __construct($apiKey, $cert, $apiBase) {
     $this->authorize($apiKey, $cert, $apiBase);
-    $this->_signals = new Signal($this);
+    $this->signals = new Signals($this);
   }
 
   /**
