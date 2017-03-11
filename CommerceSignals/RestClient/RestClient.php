@@ -131,7 +131,7 @@ class RestClient implements \Iterator, \ArrayAccess {
     }
 
     public function execute($url, $method='GET', $parameters=[], $headers=[]){
-        print 'Getting: ' . $url;
+        print "Getting: $url \n";
 
         $client = clone $this;
         $client->url = $url;
