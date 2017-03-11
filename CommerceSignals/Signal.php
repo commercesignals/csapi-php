@@ -3,9 +3,24 @@
 
 namespace CommerceSignals;
 
-class Signal extends \CommerceSignals\Base {
+class Signal {
+  private $api;
 
-  public function __construct($properties) {
-    parent::__construct($properties);
+  public function __construct($api) {
+    $this->api = $api;
+  }
+
+  /**
+   * Helper for requests urn segment
+   */
+  public function requests($id = null) {
+    return $this->api->addSegment(__FUNCTION__, $id);
+  }
+
+  /**
+   * Helper for results urn segment
+   */
+  public function results($id = null) {
+    return $this->api->addSegment(__FUNCTION__, $id);
   }
 }
