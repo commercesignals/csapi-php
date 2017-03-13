@@ -15,12 +15,10 @@ const CERT_FILE_NAME = 'my-secret-api-key-cert.pem';
 const API_KEY = 'my-secret-api-key';
 const API_BASE = 'https://api.commercesignals.com/';
 
-$auth = [
+$api = new CommerceSignals\API(API_BASE, [
   'apiKey' => API_KEY,
   'cert' => file_get_contents(__DIR__ . '/' . CERT_FILE_NAME)
-];
-
-$api = new CommerceSignals\API(API_BASE, $auth);
+]);
 ```
 
 ### Request available Signals
