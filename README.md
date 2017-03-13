@@ -28,10 +28,11 @@ $api = new CommerceSignals\API(API_BASE, $auth);
 ```php
 $signals = $api->signals()
               ->get();
-
+```
 
 ### View all Signal Requests for a specific Signal
 
+```php
 $signalId = 'signal-id-to-view-requests-for';
 
 $requests = $api->signals($signalId)
