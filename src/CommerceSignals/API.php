@@ -67,7 +67,6 @@ class API {
    */
   public function get() {
     $urn = $this->buildUrn();
-print $urn;
     $results = $this->client->get($urn);
 
     return json_decode($results->response);
