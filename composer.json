@@ -1,0 +1,25 @@
+{
+    "name": "commercesignals/csapi-php",
+    "description": "API client library to work with the Commerce Signals plateform.",
+    "keywords": ["api", "library"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Corey Wilson",
+            "email": "support@commercesignals.com",
+            "homepage": "https://www.commercesignals.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "CommerceSignals\\": "src/CommerceSignals"
+        }
+    }
+}
