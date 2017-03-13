@@ -10,13 +10,18 @@ use CommerceSignals\Exceptions\URLException;
 use CommerceSignals\Exceptions\AuthException;
 
 class API {
-  private $token;
-  private $client;
+  const API_PREFIX = 'rest/v1/';
+  private $token = '';
+  private $client = '';
 
   private $urlSegments = [];
 
-  public function __construct($apiKey, $cert, $apiBase) {
-    $this->authorize($apiKey, $cert, $apiBase);
+  public function __construct($apiBase, $auth = null) {
+    if (is_array($auth)) {
+      $this->token = $this->authorize($auth['apiKey'], $auth['cert'], $apiBase);
+    }
+
+    $this->client = $this->createClient($apiBase);
     $this->signals = new Signals($this);
   }
 
@@ -45,6 +50,7 @@ class API {
    * Helper for signals urn segment
    */
   public function signals($id = null) {
+    $this->urlSegments = [];
     return $this->addSegment(__FUNCTION__, $id);
   }
 
@@ -52,6 +58,7 @@ class API {
    * Helper for results urn segment
    */
   public function campaigns($id = null) {
+    $this->urlSegments = [];
     return $this->addSegment(__FUNCTION__, $id);
   }
 
@@ -60,6 +67,7 @@ class API {
    */
   public function get() {
     $urn = $this->buildUrn();
+print $urn;
     $results = $this->client->get($urn);
 
     return json_decode($results->response);
@@ -88,6 +96,21 @@ class API {
   }
 
   /**
+   * Create the RestClient object
+   */
+  private function createClient($apiBase) {
+    $clientParams = ['base_url' => $apiBase . self::API_PREFIX];
+
+    if ($this->token !== '') {
+      $clientParams['headers'] = [
+        'Authorization' => 'Bearer ' . $this->token->access_token
+      ];
+    }
+
+    return new RestClient($clientParams);
+  }
+
+  /**
    * Request an auth token using provided api key and cert
    */
   private function authorize($apiKey, $cert, $apiBase) {
@@ -95,12 +118,7 @@ class API {
 
     try {
       $authToken->request();
-
-      $this->token = $authToken->token;
-      $this->client = new RestClient([
-        'base_url' => $apiBase . 'rest/v1/',
-        'headers' => [ 'Authorization' => 'Bearer ' . $this->token->access_token],
-      ]);
+      return $authToken->token;
 
     } catch (Exception $e) {
       throw new AuthException($e);
