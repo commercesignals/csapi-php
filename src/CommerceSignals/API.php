@@ -97,6 +97,17 @@ class API {
   }
 
   /**
+   * Update specific properties of the resource
+   * with a PATCH request
+   */
+  public function update($payload = []) {
+    $urn = $this->buildUrn();
+    $results = $this->client->patch($urn, $payload);
+
+    return $this->validateResponse($results);
+  }
+
+  /**
    * POST the resource to the API to create an object
    */
   private function post($payload) {
