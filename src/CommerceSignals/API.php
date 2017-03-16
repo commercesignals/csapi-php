@@ -71,6 +71,36 @@ class API {
     $results = $this->client->get($urn);
 
     return json_decode($results->response);
+  /**
+   * Do a create or update on the DB based
+   * if we have an id or not
+   */
+  public function save($object) {
+    if (isset($object->id)) {
+      return $this->put($object);
+    }
+
+    return $this->post($object->getAttributes());
+  }
+
+  /**
+   * POST the resource to the API to create an object
+   */
+  private function post($payload) {
+    $urn = $this->buildUrn();
+    $response = $this->client->post($urn, $payload);
+
+    return $response;
+  }
+
+  /**
+   * PUT the resource to the API to update an object
+   */
+  private function put($payload) {
+    $urn = $this->buildUrn();
+    $response = $this->client->put($urn, $payload);
+
+    return $response;
   }
 
   /**
