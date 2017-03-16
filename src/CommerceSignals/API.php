@@ -86,13 +86,17 @@ class API {
    * if we have an id or not
    */
   public function save($object) {
+    $payload = method_exists($object, 'getAttributes') ?
+      $object->getAttributes() :
+      get_object_vars($object);
+
     if (isset($object->id)) {
-      return $this->put($object);
+      return $this->put($payload);
     }
 
-    $response = $this->post($object->getAttributes());
-
+    $response = $this->post($payload);
     $class = get_class($object);
+
     return new $class($response);
   }
 
