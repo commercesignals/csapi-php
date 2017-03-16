@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CommerceSignals;
+namespace CommerceSignals\API;
 
 class Signals {
   private $api;

@@ -4,6 +4,7 @@ namespace CommerceSignals;
 
 require_once(__DIR__ . '/autoload.php');
 
+use CommerceSignals\API\Signals;
 use CommerceSignals\RestClient\RestClient;
 use CommerceSignals\Auth\AuthToken;
 use CommerceSignals\Exceptions\URLException;
