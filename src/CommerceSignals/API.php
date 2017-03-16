@@ -69,8 +69,17 @@ class API {
   public function get() {
     $urn = $this->buildUrn();
     $results = $this->client->get($urn);
+    $response = json_decode($results->response);
 
-    return json_decode($results->response);
+    // if the results are paginated, return the content
+    // rather than the pagination information
+    if (isset($response->numberOfElements)) {
+      $response = $response->content;
+    }
+
+    return $response;
+  }
+
   /**
    * Do a create or update on the DB based
    * if we have an id or not
