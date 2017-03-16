@@ -90,7 +90,10 @@ class API {
       return $this->put($object);
     }
 
-    return $this->post($object->getAttributes());
+    $response = $this->post($object->getAttributes());
+
+    $class = get_class($object);
+    return new $class($response);
   }
 
   /**
