@@ -9,6 +9,7 @@ use CommerceSignals\RestClient\RestClient;
 use CommerceSignals\Auth\AuthToken;
 use CommerceSignals\Exceptions\URLException;
 use CommerceSignals\Exceptions\AuthException;
+use CommerceSignals\Exceptions\APIException;
 
 class API {
   const API_PREFIX = 'rest/v1/';
@@ -97,9 +98,9 @@ class API {
    */
   private function post($payload) {
     $urn = $this->buildUrn();
-    $response = $this->client->post($urn, $payload);
+    $results = $this->client->post($urn, $payload);
 
-    return $response;
+    return $this->validateResponse($results);
   }
 
   /**
@@ -107,7 +108,26 @@ class API {
    */
   private function put($payload) {
     $urn = $this->buildUrn();
-    $response = $this->client->put($urn, $payload);
+    $results = $this->client->put($urn, $payload);
+
+    return $this->validateResponse($results);
+  }
+
+  /**
+   * Check the response code from the REST request
+   * to make sure we have a 200, otherwise, throw
+   * an APIException
+   */
+  private function validateResponse($results) {
+    $response = json_decode($results->response);
+
+    if ($results->info->http_code !== 200) {
+      throw new APIException(
+        $response->errorType,
+        $response->errors,
+        $results->info->http_code
+      );
+    }
 
     return $response;
   }
