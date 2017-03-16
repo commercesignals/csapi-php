@@ -164,7 +164,7 @@ class RestClient implements \Iterator, \ArrayAccess {
         // merged with parameters specified in the default options.
         if(is_array($parameters)){
             $parameters = array_merge($client->options['parameters'], $parameters);
-            $parameters_string = http_build_query($parameters);
+            $parameters_string = json_encode($parameters);
         }
         else
             $parameters_string = (string) $parameters;

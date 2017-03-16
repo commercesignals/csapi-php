@@ -102,7 +102,8 @@ class API {
 
     if ($this->token !== '') {
       $clientParams['headers'] = [
-        'Authorization' => 'Bearer ' . $this->token->access_token
+        'Authorization' => 'Bearer ' . $this->token->access_token,
+        'Content-Type' => 'application/json',
       ];
     }
 
