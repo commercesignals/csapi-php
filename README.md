@@ -25,8 +25,8 @@ $api = new CommerceSignals\API(API_BASE, [
 The main API class is used to build the API request you are making.
 
 The methods of the API call can be chained to create the segments of the request you are making.  
-Each chained method has an optional "id" attribute that can be passed to request a specific resource from the segment part.
-The final method in the call determins the type of HTTP request being made and has an optional $payload paramater that will be used as the request BODY.
+Each chained method has an optional `$id` paramater that can be passed to request a specific resource from the segment part.
+The final method in the call determins the type of HTTP request being made and has an optional `$payload` paramater that will be used as the request BODY.
 
 ```
 get() => GET request
