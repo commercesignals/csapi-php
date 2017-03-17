@@ -1,8 +1,14 @@
 {
     "name": "commercesignals/csapi-php",
-    "description": "API client library to work with the Commerce Signals plateform.",
+    "description": "API client library to work with the Commerce Signals platform.",
     "keywords": ["api", "library"],
     "license": "BSD-3-Clause",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/commercesignals/csapi-php"
+        }
+    ],
     "authors": [
         {
             "name": "Corey Wilson",
