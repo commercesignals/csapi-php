@@ -11,8 +11,8 @@ Library to interface with the Commerce Signals platform.
 ### Authorize your client
 
 ```php
-const CERT_FILE_NAME = 'my-secret-api-key-cert.pem';
-const API_KEY = 'my-secret-api-key';
+const CERT_FILE_NAME = 'my-api-key-private-cert.pem';  
+const API_KEY = '0b70012a-5a7a-2b90-815a-aa73a7f8001a'; // My API Key
 const API_BASE = 'https://api.commercesignals.com/';
 
 $api = new CommerceSignals\API(API_BASE, [
@@ -36,14 +36,14 @@ save() => POST or PUT (depending on if the payload BODY has an id set or not)
 
 ##### Example
 ```php
-  $api->signals('0a03-56b3-23')
-    ->requests('0022-57fd-10')
+  $api->signals('0a000337-574f-223e-8156-4f3a98e707a1')
+    ->requests('0a00017c-5aac-1195-82ba-ae6ea3fa000a')
     ->results()
     ->get();
 ```
 ##### HTTP Request
 
-`GET https://api.commercesignals.com/rest/v1/signals/0a03-56b3-23/requests/0022-57fd-10/results`
+`GET https://api.commercesignals.com/rest/v1/signals/0a00...07a1/requests/0a00...a000a/results`
 
 
 ### Request available Signals
@@ -56,7 +56,7 @@ $signals = $api->signals()
 ### View all Signal Requests for a specific Signal
 
 ```php
-$signalId = 'signal-id-to-view-requests-for';
+$signalId = '0a000337-574f-223e-8156-4f3a98e707a1';
 
 $requests = $api->signals($signalId)
                ->requests()
@@ -66,8 +66,8 @@ $requests = $api->signals($signalId)
 ### View Results from a delivered Signal Request
 
 ```php
-$signalId = 'signal-id-to-view-requests-for';
-$requestId = 'request-id-to-view-results-for';
+$signalId = '0a000337-574f-223e-8156-4f3a98e707a1';
+$requestId = '0a00017c-5aac-1195-82ba-ae6ea3fa000a';
 
 $results = $api->signals($signalId)
               ->requests($requestId)
@@ -111,7 +111,7 @@ try {
 use CommerceSignals\Exceptions\APIException;
 
 try {
-  $api->campaigns('0a00017c-5aac-1195-815a-ae8ea3fa000a')
+  $api->campaigns('0a00017c-5aac-1195-82ba-ae6ea3fa000a')
     ->update([
       'name' => 'Updated Campaign Name',
       'description' => 'Updated Campaign Description',
