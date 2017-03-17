@@ -14,7 +14,7 @@ Library to interface with the Commerce Signals platform.
 ### Authorize your client
 
 ```php
-const CERT_FILE_NAME = 'my-api-key-private-cert.pem';  
+const CERT_FILE_NAME = 'my-api-key-private-cert.pem';
 const API_KEY = '0b70012a-5a7a-2b90-815a-aa73a7f8001a'; // My API Key
 const API_BASE = 'https://api.commercesignals.com/';
 
@@ -25,9 +25,9 @@ $api = new CommerceSignals\API(API_BASE, [
 ```
 
 ### The API class
-The main API class is used to build the API request you are making.
+The main API class is used to build the API request to issue.
 
-The methods of the API call can be chained to create the segments of the request you are making.  
+The methods of the API call can be chained to create the segments of the request you are making.
 Each chained method has an optional `$id` paramater that can be passed to request a specific resource from the segment part.
 The final method in the call determins the type of HTTP request being made and has an optional `$payload` paramater that will be used as the request BODY.
 
