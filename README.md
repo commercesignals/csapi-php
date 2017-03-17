@@ -126,6 +126,3 @@ try {
 }
 ```
 
-Demo
----------
-A demo project using this library is available on another github repo. (Coming Soon)
