@@ -1,0 +1,7 @@
+## 0.0.1 - 2017-03-17 (Foxtrot)
+
+### Added
+- Automatic API authenication over OAuth with JWT
+- GET signals, signal requests, signal request results
+- GET, POST, PUT, PATCH campaigns
+- Composer support
