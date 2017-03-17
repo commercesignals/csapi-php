@@ -21,6 +21,31 @@ $api = new CommerceSignals\API(API_BASE, [
 ]);
 ```
 
+### The API class
+The main API class is used to build the API request you are making.
+
+The methods of the API call can be chained to create the segments of the request you are making.  
+Each chained method has an optional "id" attribute that can be passed to request a specific resource from the segment part.
+The final method in the call determins the type of HTTP request being made and has an optional $payload paramater that will be used as the request BODY.
+
+```
+get() => GET request
+update() => PATCH request
+save() => POST or PUT (depending on if the payload BODY has an id set or not)
+```
+
+##### Example
+```php
+  $api->signals('0a03-56b3-23')
+    ->requests('0022-57fd-10')
+    ->results()
+    ->get();
+```
+##### HTTP Request
+
+`GET https://api.commercesignals.com/rest/v1/signals/0a03-56b3-23/requests/0022-57fd-10/results`
+
+
 ### Request available Signals
 
 ```php
