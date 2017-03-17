@@ -1,4 +1,7 @@
-# Commerce Signals API Library
+<p align="center"><img src="https://s3.amazonaws.com/comsig-marketing/databridge-black-400.png" alt="Databridge by Commerce Signals"></p>
+
+
+[![Build Status](https://travis-ci.org/commercesignals/csapi-php.svg?branch=master)](https://travis-ci.org/commercesignals/csapi-php)
 
 Library to interface with the Commerce Signals platform.
 
