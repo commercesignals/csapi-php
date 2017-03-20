@@ -22,4 +22,11 @@ class Signals {
   public function results($id = null) {
     return $this->api->addSegment(__FUNCTION__, $id);
   }
+
+  /**
+   * Helper for merchants urn segment
+   */
+  public function merchants($id = null) {
+    return $this->api->addSegment(__FUNCTION__, $id);
+  }
 }
