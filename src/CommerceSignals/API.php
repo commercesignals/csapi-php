@@ -67,9 +67,9 @@ class API {
   /**
    * Make a get request with the urlSegment stack
    */
-  public function get() {
+  public function get($params = []) {
     $urn = $this->buildUrn();
-    $results = $this->client->get($urn);
+    $results = $this->client->get($urn, $params);
     $response = json_decode($results->response);
 
     // if the results are paginated, return the content
