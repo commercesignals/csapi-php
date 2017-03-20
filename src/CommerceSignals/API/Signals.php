@@ -1,6 +1,5 @@
 <?php
 
-
 namespace CommerceSignals\API;
 
 class Signals {
