@@ -177,7 +177,7 @@ class RestClient implements \Iterator, \ArrayAccess {
         }
         elseif($parameters_string){
             $client->url .= strpos($client->url, '?')? '&' : '?';
-            $client->url .= $parameters_string;
+            $client->url .= http_build_query($parameters);
         }
 
         if($client->options['base_url']){
