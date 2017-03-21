@@ -49,7 +49,7 @@ class ApiTest extends PHPUnit_Framework_TestCase {
             }
         )
       ->then()
-        ->body(json_encode(SELF::AUTH_TOKEN))
+        ->body(json_encode($this->authToken))
         ->end();
   }
 
@@ -65,6 +65,6 @@ class ApiTest extends PHPUnit_Framework_TestCase {
       'cert' => file_get_contents(__DIR__ . '/fake-cert.pem'),
     ]);
 
-    $this->assertSame($api->getToken()->access_token, $api->getToken()->access_token);
+    $this->assertSame($api->getToken()->access_token, $this->authToken['access_token']);
   }
 }
