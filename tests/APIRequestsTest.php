@@ -16,7 +16,7 @@ class ApiTest extends PHPUnit_Framework_TestCase {
 
   use HttpMockTrait;
 
-  const AUTH_TOKEN = [
+  public $authToken = [
     'access_token' => '1234567890',
     'token_type' => 'bearer',
     'refresh_token' => '0987654321',
