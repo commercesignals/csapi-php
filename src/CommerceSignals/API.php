@@ -173,6 +173,13 @@ class API {
   }
 
   /**
+   * Get the access token
+   */
+  public function getToken() {
+    return $this->token;
+  }
+
+  /**
    * Create the RestClient object
    */
   private function createClient($apiBase) {
