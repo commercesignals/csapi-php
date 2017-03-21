@@ -35,6 +35,9 @@ class AuthToken {
       'assertion' => $signedJWT
     ];
 
+    ob_start();
+    $out = fopen('php://output', 'w');
+
     $curl = curl_init();
 
     curl_setopt_array($curl, [
@@ -42,11 +45,16 @@ class AuthToken {
       CURLOPT_POST => true,
       CURLOPT_POSTFIELDS => http_build_query($postParams),
       CURLOPT_USERPWD => 'signals-api:',
-      CURLOPT_RETURNTRANSFER => true
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_VERBOSE => true,
+      CURLOPT_STDERR => $out,
     ]);
 
     $result = curl_exec($curl);
     curl_close($curl);
+
+    fclose($out);
+    $debug = ob_get_clean();
 
     $this->token = json_decode($result);
 
