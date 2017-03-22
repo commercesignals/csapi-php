@@ -38,16 +38,14 @@ class ApiTest extends PHPUnit_Framework_TestCase {
 
     $this->http->mock
       ->when()
-        ->callback(
-            function (Request $request) {
-              return
-                $request->getMethod() === 'POST' &&
-                $request->getPathInfo() === '/oauth/token' &&
-                $request->headers->has('authorization') &&
-                $request->request->has('grant_type') &&
-                $request->request->has('assertion');
-            }
-        )
+        ->callback(function (Request $request) {
+          return
+            $request->getMethod() === 'POST' &&
+            $request->getPathInfo() === '/oauth/token' &&
+            $request->headers->has('authorization') &&
+            $request->request->has('grant_type') &&
+            $request->request->has('assertion');
+        })
       ->then()
         ->body(json_encode($this->authToken))
         ->end();
