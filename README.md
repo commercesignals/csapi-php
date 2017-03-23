@@ -78,6 +78,15 @@ $results = $api->signals($signalId)
               ->get();
 ```
 
+#### Include Summary Data (info dipslayed in Dashboard Results)
+
+```php
+$results = $api->signals($signalId)
+              ->requests($requestId)
+              ->results()
+              ->get(['summary' => true]);
+```
+
 ### View all my campaigns
 
 ```php
