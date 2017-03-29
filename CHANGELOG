@@ -1,6 +1,17 @@
+## Unreleased (master branch)
+
+### Fixes
+- GET requests now use search params
+- Better error message when using an invalid API base URL
+- Better error message when using an invalid API token
+
+### Features
+- Support for getting a list of available merchants for a signal
+- Added example for pulling back summarized (calcuated) data for a signal request result
+
 ## 0.0.1 - 2017-03-17 (Foxtrot)
 
-### Added
+### Features
 - Automatic API authenication over OAuth with JWT
 - GET signals, signal requests, signal request results
 - GET, POST, PUT, PATCH campaigns
