@@ -17,9 +17,11 @@ class AuthToken {
   private $endpoint;
   private $apiKey;
   private $cert;
+  private $apiBase;
 
   public function __construct($apiKey, $cert, $apiBase) {
     $this->endpoint = $apiBase . SELF::API_SEGMENT;
+    $this->apiBase = $apiBase;
     $this->cert = $cert;
     $this->apiKey = $apiKey;
   }
@@ -51,12 +53,20 @@ class AuthToken {
     ]);
 
     $result = curl_exec($curl);
+    $response = curl_getinfo($curl);
+
     curl_close($curl);
 
     fclose($out);
     $debug = ob_get_clean();
 
     $this->token = json_decode($result);
+
+    if ($response['http_code'] === 0 || $response['http_code'] === 404) {
+      $error = "Unable to authorize against {$this->apiBase}. ";
+      $error .= "Please check your API base URL configuration.";
+      throw new AuthException($error);
+    }
 
     if (property_exists($this->token, 'error')) {
       $error = $this->token->error . ': ' . $this->token->error_description;
