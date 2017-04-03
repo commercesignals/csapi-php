@@ -49,6 +49,14 @@ class API {
   }
 
   /**
+   * Helper for audience-files urn segment
+   */
+  public function audienceFiles($id = null) {
+    $this->urlSegments = [];
+    return $this->addSegment('audience-files', $id);
+  }
+
+  /**
    * Helper for signals urn segment
    */
   public function signals($id = null) {
