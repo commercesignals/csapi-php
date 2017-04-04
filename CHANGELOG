@@ -9,6 +9,7 @@
 ### Features
 - (api) Support for getting a list of available merchants for a signal
 - (api) Support for uploading audience files
+- (api) Added logger to print out debug info
 - (docs) Added example for pulling back summarized (calcuated) data for a signal request result
 
 ## 0.0.1 - 2017-03-17 (Foxtrot)
