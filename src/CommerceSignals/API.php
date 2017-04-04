@@ -150,6 +150,8 @@ class API {
       $errorType = isset($response->errorType) ? $response->errorType : 'Unknown';
       $errors = isset($response->errors) ? $response->errors : ['Unknown'];
 
+      Logger::out(3, "Resonse body: {$results->response}");
+
       throw new APIException(
         $errorType,
         $errors,
