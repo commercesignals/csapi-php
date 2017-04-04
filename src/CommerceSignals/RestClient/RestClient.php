@@ -2,6 +2,8 @@
 
 namespace CommerceSignals\RestClient;
 
+use CommerceSignals\Logger;
+
 /**
  * PHP REST Client
  * https://github.com/tcdent/php-restclient
@@ -204,11 +206,15 @@ class RestClient implements \Iterator, \ArrayAccess {
             }
         }
 
+        Logger::out(1, "$method {$client->url}");
+
         curl_setopt_array($client->handle, $curlopt);
 
         $client->parse_response(curl_exec($client->handle));
         $client->info = (object) curl_getinfo($client->handle);
         $client->error = curl_error($client->handle);
+
+        Logger::out(2, print_r($client->info, true));
 
         curl_close($client->handle);
         return $client;
