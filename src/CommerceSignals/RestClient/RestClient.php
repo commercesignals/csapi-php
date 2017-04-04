@@ -182,8 +182,10 @@ class RestClient implements \Iterator, \ArrayAccess {
             $curlopt[CURLOPT_POSTFIELDS] = $parameters_string;
         }
         elseif($parameters_string){
-            $client->url .= strpos($client->url, '?')? '&' : '?';
-            $client->url .= http_build_query($parameters);
+            if (count($parameters) > 0) {
+                $client->url .= strpos($client->url, '?')? '&' : '?';
+                $client->url .= http_build_query($parameters);
+            }
         }
 
         if($client->options['base_url']){
