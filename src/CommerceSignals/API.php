@@ -81,11 +81,13 @@ class API {
 
     // if the results are paginated, return the content
     // rather than the pagination information
-    if (isset($results->response->numberOfElements)) {
-      $results->response = $results->response->content;
+    $response = $this->validateResponse($results);
+
+    if (isset($response->numberOfElements)) {
+      return $response->content;
     }
 
-    return $this->validateResponse($results);
+    return $response;
   }
 
   /**
