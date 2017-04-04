@@ -2,6 +2,7 @@
 
 ### Fixes
 - (api) GET requests now use search params
+- (api) GET requests now throw an APIException when non 200 response is returned
 - (api) Better error message when using an invalid API base URL
 - (api) Better error message when using an invalid API token
 

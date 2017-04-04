@@ -78,15 +78,14 @@ class API {
   public function get($params = []) {
     $urn = $this->buildUrn();
     $results = $this->client->get($urn, $params);
-    $response = json_decode($results->response);
 
     // if the results are paginated, return the content
     // rather than the pagination information
-    if (isset($response->numberOfElements)) {
-      $response = $response->content;
+    if (isset($results->response->numberOfElements)) {
+      $results->response = $results->response->content;
     }
 
-    return $response;
+    return $this->validateResponse($results);
   }
 
   /**
@@ -148,9 +147,12 @@ class API {
     $response = json_decode($results->response);
 
     if ($results->info->http_code !== 200) {
+      $errorType = isset($response->errorType) ? $response->errorType : 'Unknown';
+      $errors = isset($response->errors) ? $response->errors : ['Unknown'];
+
       throw new APIException(
-        $response->errorType,
-        $response->errors,
+        $errorType,
+        $errors,
         $results->info->http_code
       );
     }
