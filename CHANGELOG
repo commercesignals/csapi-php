@@ -1,18 +1,19 @@
-## Unreleased (master branch)
+## 0.1.0 - 2017-01-04 (Capybara)
 
 ### Fixes
-- GET requests now use search params
-- Better error message when using an invalid API base URL
-- Better error message when using an invalid API token
+- (api) GET requests now use search params
+- (api) Better error message when using an invalid API base URL
+- (api) Better error message when using an invalid API token
 
 ### Features
-- Support for getting a list of available merchants for a signal
-- Added example for pulling back summarized (calcuated) data for a signal request result
+- (api) Support for getting a list of available merchants for a signal
+- (api) Support for uploading audience files
+- (docs) Added example for pulling back summarized (calcuated) data for a signal request result
 
 ## 0.0.1 - 2017-03-17 (Foxtrot)
 
 ### Features
-- Automatic API authenication over OAuth with JWT
-- GET signals, signal requests, signal request results
-- GET, POST, PUT, PATCH campaigns
-- Composer support
+- (api) Automatic API authenication over OAuth with JWT
+- (api) GET signals, signal requests, signal request results
+- (api) GET, POST, PUT, PATCH campaigns
+- (lib) Composer support
