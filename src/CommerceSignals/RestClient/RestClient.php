@@ -32,7 +32,7 @@ class RestClient implements \Iterator, \ArrayAccess {
             'headers' => [],
             'parameters' => [],
             'curl_options' => [],
-            'user_agent' => "Commerce Signals PHP Library / v0.1",
+            'user_agent' => "Commerce Signals PHP Library / v0.1.0",
             'base_url' => NULL,
             'format' => NULL,
             'format_regex' => "/(\w+)\/(\w+)(;[.+])?/",
