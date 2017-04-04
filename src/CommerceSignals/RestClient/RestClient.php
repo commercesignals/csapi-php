@@ -147,6 +147,12 @@ class RestClient implements \Iterator, \ArrayAccess {
         if(count($client->options['headers']) || count($headers)){
             $curlopt[CURLOPT_HTTPHEADER] = [];
             $headers = array_merge($client->options['headers'], $headers);
+
+            // remove the json content type from requests that have a curl file
+            if ($this->hasFile($parameters)) {
+                unset($headers['Content-Type']);
+            }
+
             foreach($headers as $key => $values){
                 foreach(is_array($values)? $values : [$values] as $value){
                     $curlopt[CURLOPT_HTTPHEADER][] = sprintf("%s:%s", $key, $value);
@@ -169,7 +175,7 @@ class RestClient implements \Iterator, \ArrayAccess {
 
         if(strtoupper($method) == 'POST'){
             $curlopt[CURLOPT_POST] = TRUE;
-            $curlopt[CURLOPT_POSTFIELDS] = $parameters_string;
+            $curlopt[CURLOPT_POSTFIELDS] = $this->hasFile($parameters) ? $parameters : $parameters_string;
         }
         elseif(strtoupper($method) != 'GET'){
             $curlopt[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
@@ -193,6 +199,7 @@ class RestClient implements \Iterator, \ArrayAccess {
                 $curlopt[$key] = $value;
             }
         }
+
         curl_setopt_array($client->handle, $curlopt);
 
         $client->parse_response(curl_exec($client->handle));
@@ -265,6 +272,16 @@ class RestClient implements \Iterator, \ArrayAccess {
         }
 
         return $this->decoded_response;
+    }
+
+    private function hasFile($parameters) {
+        foreach($parameters as $param) {
+            if ($param instanceof \CURLFile) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 
