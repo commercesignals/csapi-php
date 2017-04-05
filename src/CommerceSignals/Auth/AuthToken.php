@@ -62,7 +62,7 @@ class AuthToken {
 
     $this->token = json_decode($result);
 
-    if ($response['http_code'] === 0 || $response['http_code'] === 404) {
+    if (is_object($this->token) === false || in_array($response['http_code'], [0, 404])) {
       $error = "Unable to authorize against {$this->apiBase}. ";
       $error .= "Please check your API base URL configuration.";
       throw new AuthException($error);
