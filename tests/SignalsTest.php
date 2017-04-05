@@ -31,16 +31,16 @@ class SignalsTest extends ApiRequests {
    * GET /signals/$id
    */
   public function testGetSignal() {
-    $testId = $this->genFakeId();
-    parent::mockGet("signals/$testId", [
-      'id' => $testId
+    $testSignalId = $this->genFakeId();
+    parent::mockGet("signals/$testSignalId", [
+      'id' => $testSignalId
     ]);
 
     $signal = $this->getApi()
-                ->signals($testId)
+                ->signals($testSignalId)
                 ->get();
 
-    $this->assertSame($signal->id, $testId);
+    $this->assertSame($signal->id, $testSignalId);
     $this->assertFalse(is_array($signal));
   }
 
