@@ -197,6 +197,7 @@ class API {
    * Create the RestClient object
    */
   private function createClient($apiBase) {
+    $apiBase = rtrim($apiBase, '/') . '/';
     $clientParams = ['base_url' => $apiBase . self::API_PREFIX];
 
     if ($this->token !== '') {
