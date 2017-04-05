@@ -150,7 +150,16 @@ class API {
 
     if ($results->info->http_code !== 200) {
       $errorType = isset($response->errorType) ? $response->errorType : 'Unknown';
-      $errors = isset($response->errors) ? $response->errors : ['Unknown'];
+
+      $errors = [];
+
+      if (isset($response->errors)) {
+        $errors = $response->errors;
+      }
+
+      if (isset($results->error)) {
+        $errors[] = $results->error;
+      }
 
       Logger::out(3, "Resonse body: {$results->response}");
 
