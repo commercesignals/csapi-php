@@ -41,7 +41,7 @@ class SignalsTest extends ApiRequests {
                 ->get();
 
     $this->assertSame($signal->id, $testId);
-    $this->assertSame(count($signal), 1);
+    $this->assertFalse(is_array($signal));
   }
 
   /**
@@ -85,7 +85,7 @@ class SignalsTest extends ApiRequests {
                 ->get();
 
     $this->assertSame($request->id, $testRequestId);
-    $this->assertSame(count($request), 1);
+    $this->assertFalse(is_array($request));
   }
 
   /**
@@ -107,7 +107,7 @@ class SignalsTest extends ApiRequests {
                   ->get();
 
     $this->assertSame($results->id, $testResultsId);
-    $this->assertSame(count($results), 1);
+    $this->assertFalse(is_array($results));
   }
 
   /**
@@ -131,7 +131,7 @@ class SignalsTest extends ApiRequests {
                   ->get($queryParams);
 
     $this->assertSame($results->summarizedId, $testResultsId);
-    $this->assertSame(count($results), 1);
+    $this->assertFalse(is_array($results));
   }
 
   /**
@@ -176,6 +176,6 @@ class SignalsTest extends ApiRequests {
                   ->get();
 
     $this->assertSame($merchant->id, $testMerchantId);
-    $this->assertSame(count($merchant), 1);
+    $this->assertFalse(is_array($merchant));
   }
 }
