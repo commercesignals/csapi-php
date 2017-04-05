@@ -207,6 +207,7 @@ class RestClient implements \Iterator, \ArrayAccess {
         }
 
         Logger::out(1, "$method {$client->url}");
+        Logger::out(3, "CURLOPTS: " . print_r($curlopt, true));
 
         curl_setopt_array($client->handle, $curlopt);
 
