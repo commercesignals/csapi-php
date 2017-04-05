@@ -1,10 +1,11 @@
 <?php
 
-use CommerceSignals\API;
 use InterNations\Component\HttpMock\PHPUnit\HttpMockTrait;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
+use CommerceSignals\API;
 
 /**
  *  Basic test on the API class to make sure we have
@@ -12,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  *  @author Corey Wilson
  */
-class ApiTest extends PHPUnit_Framework_TestCase {
+class ApiRequests extends PHPUnit_Framework_TestCase {
 
   use HttpMockTrait;
 
@@ -33,6 +34,9 @@ class ApiTest extends PHPUnit_Framework_TestCase {
     static::tearDownHttpMockAfterClass();
   }
 
+  /**
+   * Handle the auth requests
+   */
   public function setUp() {
     $this->setUpHttpMock();
 
@@ -51,18 +55,31 @@ class ApiTest extends PHPUnit_Framework_TestCase {
         ->end();
   }
 
+  public function mockGet($url, $response, $queryParams = []) {
+    $this->http->mock
+        ->when()
+            ->methodIs('GET')
+            ->pathIs("/rest/v1/$url")
+            ->queryParamsAre($queryParams)
+        ->then()
+            ->body(json_encode($response))
+        ->end();
+
+    $this->http->setUp();
+  }
+
+  public function genFakeId() {
+    return mt_rand(1, 10000);
+  }
+
   public function tearDown() {
     $this->tearDownHttpMock();
   }
 
-  public function testAuthToken() {
-    $this->http->setUp();
-
-    $api = new API('http://localhost:8082', [
+  public function getApi() {
+    return new API('http://localhost:8082', [
       'apiKey' => '123456',
       'cert' => file_get_contents(__DIR__ . '/fake-cert.pem'),
     ]);
-
-    $this->assertSame($api->getToken()->access_token, $this->authToken['access_token']);
   }
 }
