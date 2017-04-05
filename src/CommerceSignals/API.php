@@ -142,13 +142,16 @@ class API {
 
   /**
    * Check the response code from the REST request
-   * to make sure we have a 200, otherwise, throw
+   * to make sure we have a 2**, otherwise, throw
    * an APIException
    */
   private function validateResponse($results) {
-    $response = json_decode($results->response);
+    Logger::out(3, "Resonse: " . print_r($results, true));
 
-    if ($results->info->http_code !== 200) {
+    $response = json_decode($results->response);
+    $responseCode = $results->info->http_code;
+
+    if ($responseCode < 200 || $responseCode >= 300) {
       $errorType = isset($response->errorType) ? $response->errorType : 'Unknown';
 
       $errors = [];
@@ -166,7 +169,7 @@ class API {
       throw new APIException(
         $errorType,
         $errors,
-        $results->info->http_code
+        $responseCode
       );
     }
 
