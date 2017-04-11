@@ -7,7 +7,7 @@ Library to interface with the Commerce Signals platform.
 
 ## Installing with Composer
 
-`composer install commercesignals/csapi-php`
+`composer require commercesignals/csapi-php`
 
 ## Usage
 
