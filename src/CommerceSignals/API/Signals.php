@@ -2,12 +2,7 @@
 
 namespace CommerceSignals\API;
 
-class Signals {
-  private $api;
-
-  public function __construct($api) {
-    $this->api = $api;
-  }
+class Signals extends Segment {
 
   /**
    * Helper for requests urn segment
