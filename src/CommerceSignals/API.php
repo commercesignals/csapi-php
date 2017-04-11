@@ -103,7 +103,7 @@ class API {
       return $this->put($payload);
     }
 
-    $response = $this->create($payload);
+    $response = $this->post($payload);
     $class = get_class($object);
 
     return new $class($response);
@@ -123,7 +123,7 @@ class API {
   /**
    * POST the resource to the API to create an object
    */
-  public function create($payload) {
+  public function post($payload = []) {
     $urn = $this->buildUrn();
     $results = $this->client->post($urn, $payload);
 
