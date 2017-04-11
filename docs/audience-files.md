@@ -7,8 +7,8 @@ use CommerceSignals\Exceptions\APIException;
 
 try {
   $audienceFile = new CommerceSignals\AudienceFile([
-    'file' => __DIR__ . '/example_exposed_file.psv.gz',
-    'delimiter' => '|',
+    'file' => __DIR__ . '/example_exposed_file.psv.gz', // the actual file we are uploading
+    'delimiter' => '|',  // the field delimter used in the file, most likely a ',' or '|'
   ]);
 
   $newAudienceFile = $api->audienceFiles()
