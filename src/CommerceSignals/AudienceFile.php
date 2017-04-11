@@ -4,8 +4,7 @@ namespace CommerceSignals;
 
 use CURLFile;
 
-class AudienceFile {
-  private $attributes = [];
+class AudienceFile extends Resource {
 
   /**
    * Attributes can be an assoc array or
@@ -31,12 +30,5 @@ class AudienceFile {
     }
 
     $this->attributes[$name] = $value;
-  }
-
-  /**
-   * Return all this objects attributes
-   */
-  public function getAttributes() {
-    return $this->attributes;
   }
 }
