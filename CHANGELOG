@@ -1,8 +1,9 @@
 ## dev-master (Unreleased)
 
 ### Features
-- (api) Added support for analyzing audience files
+- (api) Added support for getting a list of and analyzing audience files
 - (api) Added support for converting audience files to audiences
+- (docs) Broke up code examples to their own pages
 
 ## 0.1.0 - 2017-01-04 (Capybara)
 
