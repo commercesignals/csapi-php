@@ -2,8 +2,7 @@
 
 ### Create an Audience from an Audience File Automatically
 
-##### If the isAutoProcess flag is set to yes, the platform will automatically break up
-##### the audiences based on detected grouping columns
+##### Note: If the isAutoProcess flag is set to yes, the platform will automatically break up the audiences based on detected grouping columns
 
 ```php
 use CommerceSignals\Exceptions\APIException;
