@@ -5,8 +5,13 @@ namespace CommerceSignals;
 require_once(__DIR__ . '/autoload.php');
 
 use CommerceSignals\API\Signals;
+use CommerceSignals\API\AudienceFiles;
+use CommerceSignals\API\Audiences;
+use CommerceSignals\API\Campaigns;
+
 use CommerceSignals\RestClient\RestClient;
 use CommerceSignals\Auth\AuthToken;
+
 use CommerceSignals\Exceptions\URLException;
 use CommerceSignals\Exceptions\AuthException;
 use CommerceSignals\Exceptions\APIException;
@@ -24,7 +29,6 @@ class API {
     }
 
     $this->client = $this->createClient($apiBase);
-    $this->signals = new Signals($this);
   }
 
   /**
@@ -60,6 +64,14 @@ class API {
    * Helper for signals urn segment
    */
   public function signals($id = null) {
+    $this->urlSegments = [];
+    return $this->addSegment(__FUNCTION__, $id);
+  }
+
+  /**
+   * Helper for signals urn segment
+   */
+  public function audiences($id = null) {
     $this->urlSegments = [];
     return $this->addSegment(__FUNCTION__, $id);
   }
@@ -189,6 +201,13 @@ class API {
    * that have been made
    */
   public function addSegment($name, $id = null) {
+    // if this is the first URL segment, create
+    // a local property of that object that can
+    // handle proceeding segments
+    if (empty($this->urlSegments)) {
+      $this->$name = $this->createNewApiClass($name);
+    }
+
     array_push($this->urlSegments, $name);
 
     if ($id !== null) {
@@ -220,6 +239,34 @@ class API {
     }
 
     return new RestClient($clientParams);
+  }
+
+  /**
+   *
+   */
+  private function createNewApiClass($name) {
+    switch($name) {
+      case 'signals':
+        return new Signals($this);
+        break;
+
+      case 'audience-files':
+        return new AudienceFiles($this);
+        break;
+
+      case 'campaigns':
+        return new Campaigns($this);
+        break;
+
+      case 'audiences':
+        return new Audiences($this);
+        break;
+
+      default:
+        $message = 'Invalid URL construction. ';
+        $message .= "Unknown Segment Name: $name";
+        throw new URLException($message);
+    }
   }
 
   /**
