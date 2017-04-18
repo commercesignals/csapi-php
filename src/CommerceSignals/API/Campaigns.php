@@ -2,4 +2,4 @@
 
 namespace CommerceSignals\API;
 
-class Audiences extends Segment { }
+class Campaigns extends Segment { }
