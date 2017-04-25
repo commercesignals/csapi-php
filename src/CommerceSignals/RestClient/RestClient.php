@@ -168,7 +168,7 @@ class RestClient implements \Iterator, \ArrayAccess {
     // Allow passing parameters as a pre-encoded string (or something that
     // allows casting to a string). Parameters passed as strings will not be
     // merged with parameters specified in the default options.
-    if(is_array($parameters)){
+    if(is_array($parameters) || is_object($parameters)) {
       $parameters = array_merge($client->options['parameters'], $parameters);
       $parameters_string = json_encode($parameters);
     }
