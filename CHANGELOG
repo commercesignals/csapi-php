@@ -1,8 +1,9 @@
-## dev-master (Unreleased)
+## 1.0.0 - 2017-04-27 (Unagi)
 
 ### Features
 - (api) Added support for getting a list of and analyzing audience files
 - (api) Added support for converting audience files to audiences
+- (api) Added support for submitting signal requests
 - (docs) Broke up code examples to their own pages
 
 ## 0.1.0 - 2017-01-04 (Capybara)
@@ -23,6 +24,6 @@
 
 ### Features
 - (api) Automatic API authenication over OAuth with JWT
-- (api) GET signals, signal requests, signal request results
+- (api) GET signals, signal requests, signal request resultsgit ch
 - (api) GET, POST, PUT, PATCH campaigns
 - (lib) Composer support
