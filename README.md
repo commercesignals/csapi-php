@@ -51,6 +51,7 @@ save() => POST or PUT (depending on if the payload BODY has an id set or not)
 ### Calling Endpoint Examples
 
 * [Signals](docs/signals.md)
+* [Submitting Signal Requests](docs/submitting-signal-requests.md)
 * [Campaigns](docs/campaigns.md)
 * [Audience Files](docs/audience-files.md)
 * [Audiences](docs/audiences.md)
