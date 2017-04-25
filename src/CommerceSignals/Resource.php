@@ -10,7 +10,7 @@ class Resource {
    * an object, if it's an object we pull
    * out the properties in to an array
    */
-  public function __construct($attributes) {
+  public function __construct($attributes = []) {
     if (is_object($attributes)) {
       $attributes = get_object_vars($attributes);
     }
