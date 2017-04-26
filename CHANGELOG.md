@@ -1,4 +1,7 @@
-## 1.0.0 - 2017-04-27 (Unagi)
+## 1.0.0 - Unreleased (Unagi)
+
+### TODO
+- (api) Add in estimated pricing for audiences
 
 ### Features
 - (api) Added support for getting a list of and analyzing audience files
