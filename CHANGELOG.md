@@ -1,9 +1,10 @@
 ## 1.0.0 - Unreleased (Unagi)
 
-### TODO
-- (api) Add in estimated pricing for audiences
+### Todo
+Finish writing tests
 
 ### Features
+- (api) Add in estimated pricing for audiences
 - (api) Added support for getting a list of and analyzing audience files
 - (api) Added support for converting audience files to audiences
 - (api) Added support for submitting signal requests
