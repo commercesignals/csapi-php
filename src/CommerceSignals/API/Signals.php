@@ -24,4 +24,11 @@ class Signals extends Segment {
   public function merchants($id = null) {
     return $this->api->addSegment(__FUNCTION__, $id);
   }
+
+  /**
+   * Helper for estimating cost
+   */
+  public function cost($id = null) {
+    return $this->api->addSegment(__FUNCTION__, $id);
+  }
 }
