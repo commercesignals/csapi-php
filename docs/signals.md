@@ -34,6 +34,22 @@ $requests = $api->signals($signalId)
                ->get();
 ```
 
+### Estimate the cost of a signal request
+
+```php
+$signalId = '0a000337-574f-223e-8156-4f3a98e707a1';
+
+$exposedAudienceId = '0a0001dc-5b10-1f13-815b-10a625660026';
+$controlAudienceId = '0a0001dc-5b10-1f13-815b-10a624c30024';
+
+$audienceIdList = [$exposedAudienceId, $controlAudienceId];
+
+$cost = $api->signals($signalId)
+          ->cost()
+          ->get(['audienceId' => $audienceIdList]);
+```
+
+
 ### View Results from a delivered Signal Request
 
 ```php
