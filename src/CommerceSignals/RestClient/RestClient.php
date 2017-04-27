@@ -190,7 +190,9 @@ class RestClient implements \Iterator, \ArrayAccess {
     elseif($parameters_string){
       if (count($parameters) > 0) {
         $client->url .= strpos($client->url, '?')? '&' : '?';
-        $client->url .= http_build_query($parameters);
+
+        $query = http_build_query($parameters, null, '&');
+        $client->url .= preg_replace('/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $query);
       }
     }
 
