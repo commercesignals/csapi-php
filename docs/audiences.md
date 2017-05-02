@@ -16,7 +16,7 @@ try {
     'name' => 'demo_audience_file',      // the name of the audience we are creating
     'audienceFileId' => $audienceFileId, // the Audience File we are using to create the audiences
     'campaignId' => $campaignId,         // the Campaign associated with the Audience
-    'isAutoProcess' => true              // auto break up the file
+    'autoProcess' => true                // auto break up the file
   ]);
 
   $newAudience = $api->audiences()
